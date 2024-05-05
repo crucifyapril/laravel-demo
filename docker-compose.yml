@@ -1,0 +1,44 @@
+services:
+  nginx-laravel:
+    container_name: nginx-laravel
+    image: nginx:1.24
+    restart: unless-stopped
+    ports:
+      - "81:80"
+    volumes:
+      - .:/var/www/
+      - ./.docker/config/nginx/:/etc/nginx/conf.d/
+    networks:
+      - net-laravel
+
+  php-laravel:
+    build:
+      context: ./.docker/
+    container_name: php-laravel
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www/
+    networks:
+      - net-laravel
+
+  mysql-laravel:
+    container_name: mysql-laravel
+    image: mysql:8.3.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.docker/database/mysql:/var/lib/mysql
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      MYSQL_ROOT_PASSWORD: local
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    networks:
+      - net-laravel
+
+networks:
+  net-laravel:
+    name: net-laravel
