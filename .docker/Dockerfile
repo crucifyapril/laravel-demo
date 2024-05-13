@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
     curl
 
 RUN docker-php-ext-install opcache
+RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 # Подключение redis
 RUN pecl install redis \
