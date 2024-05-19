@@ -11,9 +11,10 @@ class MainController
 {
     public function index()
     {
-        $latestNews = News::latest()->limit(10)->get();
+        $news = News::query()->latest()->paginate(3);
 
-        return view('home', ['title' => 'Главная', 'news' => $latestNews]);
+
+        return view('home', ['title' => 'Главная', 'news' => $news]);
     }
 
     public function about()

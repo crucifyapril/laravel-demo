@@ -1,10 +1,13 @@
-* {box-sizing: border-box}
+* {
+    box-sizing: border-box
+}
 
 /* Add padding to containers */
 .container {
     margin: auto;
     padding: 16px;
 }
+
 /* Add padding to containers */
 .container-center {
     max-width: 70%;
@@ -46,7 +49,7 @@ hr {
 }
 
 .registerbtn:hover {
-    opacity:1;
+    opacity: 1;
 }
 
 /* Add a blue text color to links */
@@ -153,4 +156,34 @@ button[type="submit"]:hover {
 
 .cnt {
     margin-left: 30%;
+}
+
+.pagination {
+    margin: auto;
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
 }
